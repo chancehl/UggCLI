@@ -1,28 +1,26 @@
 package org.chancehl.utils;
 
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 public class BrowserOpener {
-    public static void open(String address) {
-        try {
-            // URL to open
-            URI uri = new URI(address);
+    public static void open(String address) throws URISyntaxException, IOException {
+        // URL to open
+        URI uri = new URI(address);
 
-            // Check if Desktop is supported
-            if (Desktop.isDesktopSupported()) {
-                Desktop desktop = Desktop.getDesktop();
-                if (desktop.isSupported(Desktop.Action.BROWSE)) {
-                    // Open the URL in the default browser
-                    desktop.browse(uri);
-                } else {
-                    System.out.println("BROWSE action is not supported!");
-                }
+        // Check if Desktop is supported
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                // Open the URL in the default browser
+                desktop.browse(uri);
             } else {
-                System.out.println("Desktop is not supported!");
+                throw new RuntimeException("Browse action is not supported");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            throw new RuntimeException("Desktop is not supported");
         }
     }
 }

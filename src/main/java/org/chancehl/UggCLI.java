@@ -9,6 +9,8 @@ import org.chancehl.utils.BrowserOpener;
 import org.chancehl.utils.UggURLBuilder;
 import picocli.CommandLine;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Optional;
 
 @CommandLine.Command(name = "ugg", version = "UggCLI 0.1", mixinStandardHelpOptions = true)
@@ -32,7 +34,11 @@ public class UggCLI implements Runnable {
 
         String url = UggURLBuilder.create(champion);
 
-        BrowserOpener.open(url);
+        try {
+            BrowserOpener.open(url);
+        } catch (URISyntaxException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void main(String[] args) {
