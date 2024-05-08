@@ -1,6 +1,6 @@
 # UggCLI
 
-UggCLI is a command-line tool designed for players of "League of Champions" to quickly open champion build guides on [u.gg](https://u.gg) using specific parameters such as champion name, rank, and lane.
+UggCLI is a command-line tool designed for players of "League of Legends" to quickly open champion build guides on [u.gg](https://u.gg) using specific parameters such as champion name, rank, and lane.
 
 ## Features
 
